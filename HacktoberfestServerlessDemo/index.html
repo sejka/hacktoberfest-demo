@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Hacktoberfest Lottery</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <h1>Hacktoberfest Lottery</h1>
+    <h2 id="tries"></h2>
+    <h2 id="response-time"></h2>
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function demo() {
+            const Http = new XMLHttpRequest();
+            const url = 'https://hacktoberfestdemo.azurewebsites.net/api/Lottery';
+            var triesCount = 0;
+            var totalAverage = 0;
+            while (true) {
+                var startTime = performance.now();
+                const response = await fetch(url)
+                const text = await response.text()
+                triesCount++;
+                var responseTime = performance.now() - startTime;
+                totalAverage += responseTime;
+                if (text === "won") {
+                    console.log('you won!')
+                    break;
+                }
+
+                document.getElementById("tries").innerHTML  = triesCount;
+                document.getElementById("response-time").innerHTML  = totalAverage / triesCount;
+
+                await sleep(1000);
+            }
+        }
+
+        demo();
+    </script>
+</body>
+
+</html>
