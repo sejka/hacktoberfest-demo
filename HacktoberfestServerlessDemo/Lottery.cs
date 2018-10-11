@@ -18,11 +18,11 @@ namespace HacktoberfestServerlessDemo
 
             if (random == PROBABILITY - 1)
             {
-                return new OkObjectResult($"win");
+                return new OkObjectResult("win");
             }
             else
             {
-                return new OkObjectResult($"try again");
+                return new OkObjectResult("try again");
             }
         }
     }
