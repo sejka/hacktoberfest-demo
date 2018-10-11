@@ -52,7 +52,8 @@
                 triesCount++;
                 totalAverage += responseTime;
 
-                if (text === "won") {
+                if (text === "try again") {
+                    console.log('you won!');
                     document.getElementById("winner-box").style.display = "block";
                     window.navigator.vibrate(500);
                     break;
@@ -62,7 +63,7 @@
                 document.getElementById("response-time").innerHTML  = totalAverage / triesCount;
                 document.getElementById("last-response-time").innerHTML  = responseTime;
 
-                await sleep(200);
+                await sleep(5000);
             }
         }
 
