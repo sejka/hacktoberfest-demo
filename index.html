@@ -76,7 +76,7 @@
 
                 document.getElementById("tries").innerHTML = triesCount;
                 document.getElementById("response-time").innerHTML = Math.round(totalAverage / triesCount * 100) / 100;
-                document.getElementById("last-response-time").innerHTML = responseTime;
+                document.getElementById("last-response-time").innerHTML = Math.round(responseTime);
 
                 await sleep(100);
             }
